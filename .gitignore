@@ -1,0 +1,16 @@
+# 虚拟环境与缓存
+.venv/
+__pycache__/
+*.pyc
+
+# IDE 配置
+.idea/
+
+# 本地运行数据（可由 data/ 目录重新构建，不入库）
+chroma_db/
+chroma_db1/
+chat_history/
+md5.txt
+
+# 练习副本
+copy/
