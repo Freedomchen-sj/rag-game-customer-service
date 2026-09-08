@@ -11,6 +11,7 @@ chroma_db/
 chroma_db1/
 chat_history/
 md5.txt
+eval_result.txt
 
 # 练习副本
 copy/
