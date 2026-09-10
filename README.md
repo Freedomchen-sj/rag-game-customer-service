@@ -74,8 +74,20 @@ python eval_game.py
 
 评测使用内存临时向量库（语料块按 chunk_size 缓存、查询批量向量化后本地余弦排序），不污染 `chroma_db/`。测试集见 `game_eval_testset.tsv`。
 
+## 性能实测（2026-09，qwen3-max + text-embedding-v4，20 条真实查询）
+
+| 指标 | P50 | P95 |
+|---|---|---|
+| 检索延迟（Chroma top-k=3） | 0.14s | 0.17s |
+| 端到端（检索+生成） | 5.7s | 9.0s |
+| 查询向量化 | 138ms | - |
+
+- 平均输入 ~1.8K token / 输出 ~206 token，单次问答成本约 **0.015 元**
+- 延迟瓶颈在生成侧而非检索侧（检索占比 <3%）；top-k=3 经评测确认为质量-成本平衡点
+- 优化方向：流式先出首 token 改善体感延迟、高频问答对缓存、输出长度约束
+
 ## 后续规划
 
 - 扩充更多游戏品类（如原神、永劫无间等）的知识库
 - 引入 BM25 与向量检索的多路召回融合，改善英雄名/装备名等专有名词的召回
-- 基于 LangGraph 实现 ReAct Agent，支持战绩查询、版本更新查询等工具自主调度
+- ~~基于 LangGraph 实现 ReAct Agent，支持工具自主调度~~ ✅ 已在后续项目落地：[智扫通机器人智能客服（ReAct Agent）](https://github.com/Freedomchen-sj/react_agent_customer_service)
