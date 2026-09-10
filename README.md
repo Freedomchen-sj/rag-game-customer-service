@@ -90,4 +90,4 @@ python eval_game.py
 
 - 扩充更多游戏品类（如原神、永劫无间等）的知识库
 - 引入 BM25 与向量检索的多路召回融合，改善英雄名/装备名等专有名词的召回
-- ~~基于 LangGraph 实现 ReAct Agent，支持工具自主调度~~ ✅ 已在后续项目落地：[智扫通机器人智能客服（ReAct Agent）](https://github.com/Freedomchen-sj/react_agent_customer_service)
+- ~~基于 LangGraph 实现 ReAct Agent，支持工具自主调度~~ ✅ 已在后续项目落地：[智扫通机器人agent系统（ReAct Agent）](https://github.com/Freedomchen-sj/react_agent_customer_service)
